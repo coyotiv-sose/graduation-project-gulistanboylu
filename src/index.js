@@ -17,8 +17,8 @@ async function main() {
     name: 'Buket',
   })
 
-  console.log(rose.data)
-  console.log(buket.data)
+  const allUsers = await axios.get('http://localhost:3000/users')
+  console.log(allUsers.data)
 }
 
 main()
