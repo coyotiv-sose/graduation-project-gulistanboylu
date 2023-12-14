@@ -9,13 +9,16 @@ axios.get('http://localhost:3000/users').then(response => {
 
 // create a user
 async function main() {
-  const response = await axios
-    .post('http://localhost:3000/users', {
-      name: 'Rose',
-    })
-    .then(response => {
-      console.log(response.data)
-    })
+  const rose = await axios.post('http://localhost:3000/users', {
+    name: 'Rose',
+  })
+
+  const buket = await axios.post('http://localhost:3000/users', {
+    name: 'Buket',
+  })
+
+  console.log(rose.data)
+  console.log(buket.data)
 }
 
 main()
