@@ -16,11 +16,11 @@ class User {
   }
 
   static storyList = []
-  static storyCreate(hero, title, topic, favoruitePeople, heroDescription) {
-    const story = new Story(title, topic, favoruitePeople, heroDescription)
+  static storyCreate({ hero, title, topic, favoruitePeople, heroDescription }) {
+    const newStory = new Story(hero, title, topic, favoruitePeople, heroDescription)
 
-    Story.storyList.push(story)
-    return story
+    User.storyList.push(newStory)
+    return newStory
   }
 }
 
