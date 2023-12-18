@@ -23,6 +23,18 @@ async function main() {
 
   const allUsers = await axios.get('http://localhost:3000/users')
   console.log(allUsers.data)
+
+  const roseFirstStory = await axios
+    .post('http://localhost:3000/users/1', {
+      hero: 'Zoe',
+      title: 'Bed Time for Zeo',
+      topic: 'Bed routine for 2 years old girl, she is trying to adapt with her bedtime routine',
+      favoruitePeople: 'Mum, Dad',
+      heroDescription: '2 years old girl with currly brown hair, lovely simile',
+    })
+    .then(res => {
+      console.log('response data ', res.data)
+    })
 }
 
 main()
