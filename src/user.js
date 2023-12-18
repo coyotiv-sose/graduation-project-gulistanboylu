@@ -1,3 +1,5 @@
+const Story = require('./story')
+
 class User {
   constructor(name, childAge, email) {
     this.name = name
@@ -5,6 +7,7 @@ class User {
     this.email = email
   }
 
+  static list = []
   static create({ name, childAge, email }) {
     const newUser = new User(name, childAge, email)
 
@@ -12,7 +15,13 @@ class User {
     return newUser
   }
 
-  static list = []
+  static storyList = []
+  static storyCreate(hero, title, topic, favoruitePeople, heroDescription) {
+    const story = new Story(title, topic, favoruitePeople, heroDescription)
+
+    Story.storyList.push(story)
+    return story
+  }
 }
 
 module.exports = User
