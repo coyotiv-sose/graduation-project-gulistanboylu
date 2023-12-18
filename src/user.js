@@ -1,10 +1,12 @@
 class User {
-  constructor(name) {
+  constructor(name, childAge, email) {
     this.name = name
+    this.childAge = childAge
+    this.email = email
   }
 
-  static create({ name }) {
-    const newUser = new User(name)
+  static create({ name, childAge, email }) {
+    const newUser = new User(name, childAge, email)
 
     User.list.push(newUser)
     return newUser

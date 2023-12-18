@@ -3,18 +3,22 @@ const User = require('./user')
 console.log("Hi coyote, let's have some JavaScript fun! Yey!")
 
 //fetch the users with axios
-axios.get('http://localhost:3000/users').then(response => {
-  console.log(response.data)
-})
+// axios.get('http://localhost:3000/users').then(response => {
+//   console.log(response.data)
+// })
 
-// create a user
+//create a user
 async function main() {
   const rose = await axios.post('http://localhost:3000/users', {
     name: 'Rose',
+    childAge: 2,
+    email: 'asd@gmail.com',
   })
 
   const buket = await axios.post('http://localhost:3000/users', {
     name: 'Buket',
+    childAge: 1,
+    email: 'hdede@gmail.com',
   })
 
   const allUsers = await axios.get('http://localhost:3000/users')

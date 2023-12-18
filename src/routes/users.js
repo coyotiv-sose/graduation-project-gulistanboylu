@@ -8,8 +8,9 @@ router.get('/', function (req, res, next) {
 
 // Create a new user
 router.post('/', function (req, res, next) {
-  const user = User.create({ name: req.body.name })
+  const user = User.create({ name: req.body.name, childAge: req.body.childAge, email: req.body.email })
   res.send(user)
 })
 
+//create story for a user
 module.exports = router
