@@ -27,6 +27,7 @@ async function main() {
 
   const roseFirstStory = await axios
     .post(`${userEndPoint}/1`, {
+      email: 'asd@gmail.com',
       hero: 'Zoe',
       title: 'Bed Time for Zeo',
       topic: 'Bed routine for 2 years old girl, she is trying to adapt with her bedtime routine',

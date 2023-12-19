@@ -15,6 +15,7 @@ router.post('/', function (req, res, next) {
 //Create a new story
 router.post('/:id', function (req, res, next) {
   const story = User.storyCreate({
+    email: req.body.email,
     hero: req.body.hero,
     title: req.body.title,
     topic: req.body.topic,
