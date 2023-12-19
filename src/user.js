@@ -15,11 +15,15 @@ class User {
     return newUser
   }
 
-  static storyList = []
+  static userStories = {}
   static storyCreate({ email, hero, title, topic, favoruitePeople, heroDescription }) {
+    let storyList = []
     const newStory = new Story(hero, title, topic, favoruitePeople, heroDescription)
 
-    User.storyList[email].push(newStory)
+    storyList.push(newStory)
+    User.userStories[email] = storyList
+
+    console.log('story list', User.userStories)
     return newStory
   }
 }
