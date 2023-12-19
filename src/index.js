@@ -7,20 +7,20 @@ console.log("Hi coyote, let's have some JavaScript fun! Yey!")
 //   console.log(response.data)
 // })
 
+//create user function
+const userEndPoint = 'http://localhost:3000/users'
+async function createUser(name, childAge, email) {
+  const user = await axios.post(userEndPoint, {
+    name,
+    childAge,
+    email,
+  })
+}
+
 //create a user
 async function main() {
-  const userEndPoint = 'http://localhost:3000/users'
-  const rose = await axios.post(userEndPoint, {
-    name: 'Rose',
-    childAge: 2,
-    email: 'asd@gmail.com',
-  })
-
-  const buket = await axios.post(userEndPoint, {
-    name: 'Buket',
-    childAge: 1,
-    email: 'hdede@gmail.com',
-  })
+  createUser('Rose', 2, 'asd@gmail.com')
+  createUser('Buket', 1, 'hdede@gmail.com')
 
   const allUsers = await axios.get(userEndPoint)
   console.log(allUsers.data)
