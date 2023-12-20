@@ -1,14 +1,16 @@
 const axios = require('axios')
 const User = require('./user')
+const { response } = require('./app')
 console.log("Hi coyote, let's have some JavaScript fun! Yey!")
 
-//fetch the users with axios
+// fetch the users with axios
 // axios.get('http://localhost:3000/users').then(response => {
 //   console.log(response.data)
 // })
 
 //create user function
 const userEndPoint = 'http://localhost:3000/users'
+const storiesEndPoint = 'http://localhost:3000/stories'
 async function createUser(name, childAge, email) {
   const user = await axios.post(userEndPoint, {
     name,
@@ -20,7 +22,7 @@ async function createUser(name, childAge, email) {
 
 async function createStory(hero, title, topic, favoruitePeople, heroDescription, user) {
   const story = await axios
-    .post(`${userEndPoint}/1/stories`, {
+    .post(storiesEndPoint, {
       hero,
       title,
       topic,
@@ -49,6 +51,15 @@ async function main() {
   )
 
   await createStory(
+    'JJ',
+    'Time to go: Pee',
+    'Potty traning  for 2 years old boy, she is trying to adapt with her potty routine',
+    'Dad',
+    '3 years old boy with currly brown hair',
+    rose
+  )
+
+  await createStory(
     'Bea',
     'Bea gets a checkup',
     'Doctor checkoup for 2 year old and she will have her vaccination',
@@ -57,8 +68,13 @@ async function main() {
     buket
   )
 
+  const userStoryList = await axios.get(`http://localhost:3000/stories?email=asd@gmail.com`).then(response => {
+    return response.data
+  })
+
   const allUsers = await axios.get(userEndPoint)
   console.log(allUsers.data[0].stories)
+  console.log('storylist', userStoryList)
 }
 
 main()

@@ -13,18 +13,5 @@ router.post('/', function (req, res, next) {
 })
 
 //Create a new story
-router.post('/:id/stories', function (req, res, next) {
-  const user = User.list.find(user => user.email === req.body.user.email)
-  const story = user.storyCreate({
-    hero: req.body.hero,
-    title: req.body.title,
-    topic: req.body.topic,
-    favoruitePeople: req.body.favoruitePeople,
-    heroDescription: req.body.heroDescription,
-  })
 
-  res.send(story)
-})
-
-//create story for a user
 module.exports = router
