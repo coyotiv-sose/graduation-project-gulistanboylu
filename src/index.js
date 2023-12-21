@@ -73,7 +73,7 @@ async function main() {
   })
 
   const deleteStory = await axios
-    .delete(storiesEndPoint, {
+    .delete(`${storiesEndPoint}/Bed Time for Zeo`, {
       data: {
         userEmail: 'asd@gmail.com',
         storyTitle: 'Bed Time for Zeo', // or you can use story title: storyToDelete.title if you want to delete by title
@@ -84,11 +84,10 @@ async function main() {
     })
 
   const updateStory = await axios
-    .put(storiesEndPoint, {
+    .put(`${storiesEndPoint}/Time to go: Pee`, {
       userEmail: 'asd@gmail.com',
-      storyTitle: 'Time to go: Pee',
       newStoryData: {
-        hero: 'Updated Hero again',
+        hero: 'Updated Hero with Numan',
       },
     })
     .then(response => {
@@ -96,13 +95,17 @@ async function main() {
       return response.data
     })
 
-  await deleteUser('asd@gmail.com')
+  const getRose = await axios.get(`${userEndPoint}/asd@gmail.com`).then(response => {
+    return response.data
+  })
+
+  // await deleteUser('asd@gmail.com')
   const allUsers = await axios.get(userEndPoint).then(response => {
     return response.data
   })
   // const userlist = await getUsers()
   // console.log('all users', allUsers)
-  // console.log('storylist', userStoryList
+  // console.log('storylist', userStoryList)
   console.log(updateStory)
 }
 
