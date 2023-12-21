@@ -83,13 +83,27 @@ async function main() {
       console.log('Deleted story: ', response.data)
     })
 
+  const updateStory = await axios
+    .put(storiesEndPoint, {
+      userEmail: 'asd@gmail.com',
+      storyTitle: 'Time to go: Pee',
+      newStoryData: {
+        hero: 'Updated Hero again',
+      },
+    })
+    .then(response => {
+      console.log('story updated', response.data)
+      return response.data
+    })
+
   await deleteUser('asd@gmail.com')
   const allUsers = await axios.get(userEndPoint).then(response => {
     return response.data
   })
   // const userlist = await getUsers()
-  console.log('all users', allUsers)
+  // console.log('all users', allUsers)
   // console.log('storylist', userStoryList
+  console.log(updateStory)
 }
 
 main()

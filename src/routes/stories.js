@@ -36,4 +36,16 @@ router.delete('/', function (req, res, next) {
 
   res.status(200).send(deletedStory)
 })
+
+router.put('/', function (req, res, next) {
+  const userEmail = req.body.userEmail
+  const storyTitle = req.body.storyTitle
+  const newStoryData = req.body.newStoryData
+
+  const user = User.list.find(user => user.email === userEmail)
+
+  const updatedStory = user.updateStoryByTitle(storyTitle, newStoryData)
+
+  res.status(200).send(updatedStory)
+})
 module.exports = router
