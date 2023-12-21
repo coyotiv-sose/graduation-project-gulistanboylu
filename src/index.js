@@ -72,9 +72,20 @@ async function main() {
     return response.data
   })
 
+  const deleteStory = await axios
+    .delete(`http://localhost:3000/stories`, {
+      data: {
+        userEmail: 'asd@gmail.com',
+        storyTitle: 'Bed Time for Zeo', // or you can use story title: storyToDelete.title if you want to delete by title
+      },
+    })
+    .then(response => {
+      console.log('Deleted story: ', response.data)
+    })
+
   const allUsers = await axios.get(userEndPoint)
-  console.log(allUsers.data[0].stories)
-  console.log('storylist', userStoryList)
+  // console.log(allUsers.data[0].stories)
+  // console.log('storylist', userStoryList)
 }
 
 main()
