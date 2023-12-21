@@ -3,11 +3,6 @@ const User = require('./user')
 const { response } = require('./app')
 console.log("Hi coyote, let's have some JavaScript fun! Yey!")
 
-// fetch the users with axios
-// axios.get('http://localhost:3000/users').then(response => {
-//   console.log(response.data)
-// })
-
 //create user function
 const userEndPoint = 'http://localhost:3000/users'
 const storiesEndPoint = 'http://localhost:3000/stories'
@@ -39,7 +34,7 @@ async function createStory(hero, title, topic, favoruitePeople, heroDescription,
 async function main() {
   const rose = await createUser('Rose', 2, 'asd@gmail.com')
   const buket = await createUser('Buket', 1, 'hdede@gmail.com')
-  console.log('rose u logluyoruz', rose)
+  // console.log('rose log', rose)
 
   await createStory(
     'Zoe',
@@ -68,12 +63,12 @@ async function main() {
     buket
   )
 
-  const userStoryList = await axios.get(`http://localhost:3000/stories?email=asd@gmail.com`).then(response => {
+  const userStoryList = await axios.get(`${storiesEndPoint}?email=asd@gmail.com`).then(response => {
     return response.data
   })
 
   const deleteStory = await axios
-    .delete(`http://localhost:3000/stories`, {
+    .delete(storiesEndPoint, {
       data: {
         userEmail: 'asd@gmail.com',
         storyTitle: 'Bed Time for Zeo', // or you can use story title: storyToDelete.title if you want to delete by title
@@ -83,9 +78,12 @@ async function main() {
       console.log('Deleted story: ', response.data)
     })
 
-  const allUsers = await axios.get(userEndPoint)
-  // console.log(allUsers.data[0].stories)
-  // console.log('storylist', userStoryList)
+  const allUsers = await axios.get(userEndPoint).then(response => {
+    return response.data
+  })
+  // const userlist = await getUsers()
+  console.log('all users', allUsers)
+  // console.log('storylist', userStoryList
 }
 
 main()
