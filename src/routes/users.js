@@ -12,6 +12,12 @@ router.post('/', function (req, res, next) {
   res.send(user)
 })
 
-//Create a new story
+//Delete a user
+router.delete('/', function (req, res, next) {
+  const userEmail = req.body.userEmail
 
+  const deletedUser = User.deleteUserByEmail(userEmail)
+
+  res.status(200).send(deletedUser)
+})
 module.exports = router

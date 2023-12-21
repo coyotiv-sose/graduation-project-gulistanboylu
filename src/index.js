@@ -30,6 +30,11 @@ async function createStory(hero, title, topic, favoruitePeople, heroDescription,
     })
 }
 
+async function deleteUser(email) {
+  const response = await axios.delete('http://localhost:3000/users', { data: { userEmail: email } })
+  console.log('Deleted User:', response.data)
+}
+
 //create a user
 async function main() {
   const rose = await createUser('Rose', 2, 'asd@gmail.com')
@@ -78,6 +83,7 @@ async function main() {
       console.log('Deleted story: ', response.data)
     })
 
+  await deleteUser('asd@gmail.com')
   const allUsers = await axios.get(userEndPoint).then(response => {
     return response.data
   })

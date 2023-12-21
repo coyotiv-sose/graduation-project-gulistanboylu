@@ -27,6 +27,17 @@ class User {
     return deletedStory
   }
 
+  static deleteUserByEmail(email) {
+    const index = User.list.findIndex(user => user.email === email)
+
+    if (index === -1) {
+      return null // User not found
+    }
+
+    const deletedUser = User.list.splice(index, 1)[0]
+    return deletedUser
+  }
+
   static list = []
   static create({ name, childAge, email }) {
     const newUser = new User(name, childAge, email)
