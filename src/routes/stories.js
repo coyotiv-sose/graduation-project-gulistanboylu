@@ -4,6 +4,7 @@ const User = require('../user')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
+  // Todo : Check if email exist and if not return all stories as a response
   const email = req.query.email
   const userIndex = User.list.findIndex(user => user.email === email)
   if (userIndex === -1) {
@@ -26,9 +27,11 @@ router.post('/', function (req, res, next) {
   res.send(story)
 })
 
-router.delete('/', function (req, res, next) {
+// stories/:storyTitle
+router.delete('/:storyTitle', function (req, res, next) {
   const userEmail = req.body.userEmail
-  const storyTitle = req.body.storyTitle
+  // const storyTitle = req.body.storyTitle
+  const storyTitle = req.params.storyTitle
 
   const user = User.list.find(user => user.email === userEmail)
 
@@ -37,9 +40,9 @@ router.delete('/', function (req, res, next) {
   res.status(200).send(deletedStory)
 })
 
-router.put('/', function (req, res, next) {
+router.put('/:storyTitle', function (req, res, next) {
   const userEmail = req.body.userEmail
-  const storyTitle = req.body.storyTitle
+  const storyTitle = req.params.storyTitle
   const newStoryData = req.body.newStoryData
 
   const user = User.list.find(user => user.email === userEmail)
