@@ -1,5 +1,14 @@
 const Story = require('./story')
+const mongoose = require('mongoose')
 
+const userSchema = new mongoose.Schema({
+  name: String,
+  childAge: Number,
+  email: String,
+  stories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Story' }],
+})
+
+module.exports = mongoose.model('User', userSchema)
 class User {
   stories = []
   constructor(name, childAge, email) {
@@ -60,4 +69,4 @@ class User {
   }
 }
 
-module.exports = User
+// module.exports = User
