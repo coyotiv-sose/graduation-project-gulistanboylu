@@ -8,7 +8,6 @@ const userSchema = new mongoose.Schema({
   stories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Story' }],
 })
 
-module.exports = mongoose.model('User', userSchema)
 class User {
   stories = []
   constructor(name, childAge, email) {
@@ -59,14 +58,7 @@ class User {
     const deletedUser = User.list.splice(index, 1)[0]
     return deletedUser
   }
-
-  static list = []
-  static create({ name, childAge, email }) {
-    const newUser = new User(name, childAge, email)
-
-    User.list.push(newUser)
-    return newUser
-  }
 }
 
-// module.exports = User
+userSchema.loadClass(User)
+module.exports = mongoose.model('User', userSchema)
