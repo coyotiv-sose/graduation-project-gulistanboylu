@@ -13,8 +13,8 @@ router.get('/:userEmail', function (req, res, next) {
   res.status(200).send(user)
 })
 // Create a new user
-router.post('/', function (req, res, next) {
-  const user = User.create({ name: req.body.name, childAge: req.body.childAge, email: req.body.email })
+router.post('/', async function (req, res, next) {
+  const user = await User.create({ name: req.body.name, childAge: req.body.childAge, email: req.body.email })
   res.send(user)
 })
 
