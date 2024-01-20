@@ -14,9 +14,9 @@ router.get('/', function (req, res, next) {
   res.status(200).send(storiesForUser)
 })
 
-router.post('/', function (req, res, next) {
-  const user = User.list.find(user => user.email === req.body.user.email)
-  const story = user.storyCreate({
+router.post('/', async function (req, res, next) {
+  const user = await User.findOne({ email: req.body.user.email })
+  const story = await user.storyCreate({
     hero: req.body.hero,
     title: req.body.title,
     topic: req.body.topic,
