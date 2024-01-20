@@ -9,18 +9,10 @@ const userSchema = new mongoose.Schema({
 })
 
 class User {
-  stories = []
-  constructor(name, childAge, email) {
-    this.name = name
-    this.childAge = childAge
-    this.email = email
-  }
-
-  storyCreate({ hero, title, topic, favoruitePeople, heroDescription }) {
-    const newStory = new Story(hero, title, topic, favoruitePeople, heroDescription)
-
+  async storyCreate({ hero, title, topic, favoruitePeople, heroDescription }) {
+    const newStory = await Story.create({ hero, title, topic, favoruitePeople, heroDescription })
     this.stories.push(newStory)
-
+    await this.save()
     return newStory
   }
 
