@@ -93,10 +93,11 @@ async function main() {
   //   return response.data
   // })
   // await deleteUser('asd@gmail.com')
-  // const allUsers = await axios.get(userEndPoint).then(response => {
-  //   return response.data
-  // })
-  // const userlist = await getUsers()
+  const allUsers = await axios.get(userEndPoint).then(response => {
+    console.log('all users', response.data)
+    return response.data
+  })
+
   // console.log('all users', allUsers)
   // console.log('storylist', userStoryList)
   // console.log(updateStory)

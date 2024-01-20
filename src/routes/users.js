@@ -2,12 +2,8 @@ var express = require('express')
 var router = express.Router()
 const User = require('../models/user')
 /* GET users listing. */
-router.get('/', function (req, res, next) {
-  if (req.query.view === 'json') {
-    res.status(200).send(User.list)
-  }
-
-  res.render('users', { users: User.list })
+router.get('/', async function (req, res, next) {
+  res.send(await User.find())
 })
 
 // Get spesific user
