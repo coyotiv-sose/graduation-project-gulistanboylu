@@ -6,7 +6,7 @@ console.log("Hi coyote, let's have some JavaScript fun! Yey!")
 
 //create user function
 const userEndPoint = 'http://localhost:3000/users'
-// const storiesEndPoint = 'http://localhost:3000/stories'
+const storiesEndPoint = 'http://localhost:3000/stories'
 async function createUser(name, childAge, email) {
   const user = await axios.post(userEndPoint, {
     name,
@@ -16,20 +16,21 @@ async function createUser(name, childAge, email) {
   return user.data
 }
 
-// async function createStory(hero, title, topic, favoruitePeople, heroDescription, user) {
-//   const story = await axios
-//     .post(storiesEndPoint, {
-//       hero,
-//       title,
-//       topic,
-//       favoruitePeople,
-//       heroDescription,
-//       user,
-//     })
-//     .then(res => {
-//       console.log('response data ', res.data)
-//     })
-// }
+async function createStory(hero, title, topic, favoruitePeople, heroDescription, user) {
+  console.log('burda', storiesEndPoint, hero, title, topic, favoruitePeople, heroDescription, user)
+  await axios
+    .post(storiesEndPoint, {
+      hero,
+      title,
+      topic,
+      favoruitePeople,
+      heroDescription,
+      user,
+    })
+    .then(res => {
+      console.log('response data ', res.data)
+    })
+}
 
 // async function deleteUser(email) {
 //   const response = await axios.delete('http://localhost:3000/users', { data: { userEmail: email } })
@@ -41,14 +42,14 @@ async function main() {
   const rose = await createUser('Rose', 2, 'asd@gmail.com')
   const buket = await createUser('Buket', 1, 'hdede@gmail.com')
   // console.log('rose log', rose)
-  // await createStory(
-  //   'Zoe',
-  //   'Bed Time for Zeo',
-  //   'Bed routine for 2 years old girl, she is trying to adapt with her bedtime routine',
-  //   'Mum',
-  //   '2 years old girl with currly brown hair, lovely simile',
-  //   rose
-  // )
+  await createStory(
+    'Zoe',
+    'Bed Time for Zeo',
+    'Bed routine for 2 years old girl, she is trying to adapt with her bedtime routine',
+    'Mum',
+    '2 years old girl with currly brown hair, lovely simile',
+    rose
+  )
   // await createStory(
   //   'JJ',
   //   'Time to go: Pee',
