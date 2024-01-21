@@ -32,10 +32,10 @@ async function createStory(hero, title, topic, favoruitePeople, heroDescription,
     })
 }
 
-// async function deleteUser(email) {
-//   const response = await axios.delete('http://localhost:3000/users', { data: { userEmail: email } })
-//   console.log('Deleted User:', response.data)
-// }
+async function deleteUser(id) {
+  const response = await axios.delete(`http://localhost:3000/users/${id}`)
+  console.log(response.data)
+}
 
 //create a user
 async function main() {
@@ -93,7 +93,7 @@ async function main() {
   const getRose = await axios.get(`${userEndPoint}/65ad40c81dd49bdee858155c`).then(response => {
     return response.data
   })
-  // await deleteUser('asd@gmail.com')
+
   const allUsers = await axios.get(userEndPoint).then(response => {
     console.log('all users', response.data)
     return response.data
@@ -104,4 +104,10 @@ async function main() {
   // console.log(updateStory)
 }
 
-main()
+async function test() {
+  const defne = await createUser('DEfne', 2, 'dfne@gmail.com')
+  await deleteUser(defne._id)
+}
+
+// main()
+test()

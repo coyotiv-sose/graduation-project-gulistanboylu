@@ -18,11 +18,9 @@ router.post('/', async function (req, res, next) {
 })
 
 //Delete a user
-router.delete('/', function (req, res, next) {
-  const userEmail = req.body.userEmail
+router.delete('/:_id', async function (req, res, next) {
+  await User.findByIdAndDelete(req.params._id)
 
-  const deletedUser = User.deleteUserByEmail(userEmail)
-
-  res.status(200).send(deletedUser)
+  res.status(200).send({ message: 'User deleted' })
 })
 module.exports = router
