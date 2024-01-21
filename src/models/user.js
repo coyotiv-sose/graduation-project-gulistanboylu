@@ -1,13 +1,15 @@
 const Story = require('./story')
 const mongoose = require('mongoose')
+const autoPopulate = require('mongoose-autopopulate')
 
 const userSchema = new mongoose.Schema({
   name: String,
   childAge: Number,
   email: String,
-  stories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Story' }],
+  stories: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Story', autopopulate: true }],
 })
 
+userSchema.plugin(autoPopulate)
 class User {
   async storyCreate({ hero, title, topic, favoruitePeople, heroDescription }) {
     const newStory = await Story.create({ hero, title, topic, favoruitePeople, heroDescription })
