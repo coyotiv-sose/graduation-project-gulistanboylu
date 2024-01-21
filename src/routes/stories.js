@@ -15,7 +15,7 @@ router.get('/', function (req, res, next) {
 })
 
 router.post('/', async function (req, res, next) {
-  const user = await User.findOne({ email: req.body.user.email })
+  const user = await User.findOne({ _id: req.body.user })
   const story = await user.storyCreate({
     hero: req.body.hero,
     title: req.body.title,

@@ -109,5 +109,5 @@ async function test() {
   await deleteUser(defne._id)
 }
 
-// main()
-test()
+main()
+// test()
