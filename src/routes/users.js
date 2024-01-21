@@ -7,9 +7,8 @@ router.get('/', async function (req, res, next) {
 })
 
 // Get spesific user
-router.get('/:userEmail', function (req, res, next) {
-  const userEmail = req.params.userEmail
-  const user = User.findUserByEmail(userEmail)
+router.get('/:_id', async function (req, res, next) {
+  const user = await User.findById(req.params._id)
   res.status(200).send(user)
 })
 // Create a new user

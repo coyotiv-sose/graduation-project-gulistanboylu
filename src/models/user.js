@@ -37,11 +37,6 @@ class User {
     return story
   }
 
-  static findUserByEmail(email) {
-    const user = User.list.find(user => user.email === email)
-    return user
-  }
-
   static deleteUserByEmail(email) {
     const index = User.list.findIndex(user => user.email === email)
 

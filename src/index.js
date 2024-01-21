@@ -90,9 +90,9 @@ async function main() {
   //     console.log('story updated', response.data)
   //     return response.data
   //   })
-  // const getRose = await axios.get(`${userEndPoint}/asd@gmail.com`).then(response => {
-  //   return response.data
-  // })
+  const getRose = await axios.get(`${userEndPoint}/65ad40c81dd49bdee858155c`).then(response => {
+    return response.data
+  })
   // await deleteUser('asd@gmail.com')
   const allUsers = await axios.get(userEndPoint).then(response => {
     console.log('all users', response.data)
