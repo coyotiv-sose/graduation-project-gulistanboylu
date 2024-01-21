@@ -104,10 +104,22 @@ async function main() {
   // console.log(updateStory)
 }
 
-async function test() {
+async function testUSerDelete() {
   const defne = await createUser('DEfne', 2, 'dfne@gmail.com')
   await deleteUser(defne._id)
 }
 
-main()
-// test()
+async function testStoryDelete() {
+  const deleteStory = await axios
+    .delete(`${storiesEndPoint}/65ad808b90939fcd3f26ee17`)
+    .then(response => {
+      console.log(response.data)
+    })
+    .catch(err => {
+      console.log(err.response.data)
+    })
+}
+
+// main()
+testStoryDelete()
+// testUSerDelete()

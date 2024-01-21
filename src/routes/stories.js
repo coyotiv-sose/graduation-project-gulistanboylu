@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 const User = require('../models/user')
+const Story = require('../models/story')
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -28,16 +29,13 @@ router.post('/', async function (req, res, next) {
 })
 
 // stories/:storyTitle
-router.delete('/:storyTitle', function (req, res, next) {
-  const userEmail = req.body.userEmail
-  // const storyTitle = req.body.storyTitle
-  const storyTitle = req.params.storyTitle
-
-  const user = User.list.find(user => user.email === userEmail)
-
-  const deletedStory = user.deleteStoryByTitle(storyTitle)
-
-  res.status(200).send(deletedStory)
+router.delete('/:id', async function (req, res, next) {
+  const story = await Story.findById(req.params.id)
+  if (!story) {
+    return res.status(404).send('Story not found')
+  }
+  await Story.findByIdAndDelete(req.params.id)
+  res.status(200).send({ message: 'Story deleted' })
 })
 
 router.put('/:storyTitle', function (req, res, next) {
