@@ -40,15 +40,9 @@ router.delete('/:id', async function (req, res, next) {
   res.status(200).send({ message: 'Story deleted' })
 })
 
-router.put('/:storyTitle', function (req, res, next) {
-  const userEmail = req.body.userEmail
-  const storyTitle = req.params.storyTitle
-  const newStoryData = req.body.newStoryData
-
-  const user = User.list.find(user => user.email === userEmail)
-
-  const updatedStory = user.updateStoryByTitle(storyTitle, newStoryData)
-
+router.put('/:id', async function (req, res, next) {
+  //todo: get user id from the session on the future if its needed.
+  const updatedStory = await Story.findOneAndUpdate({ _id: req.params.id }, req.body.newStoryData, { new: true })
   res.status(200).send(updatedStory)
 })
 module.exports = router
