@@ -28,25 +28,6 @@ class User {
     const deletedStory = this.stories.splice(index, 1)[0]
     return deletedStory
   }
-
-  updateStoryByTitle(storyTitle, newData) {
-    //finds the story from the title
-    const story = this.stories.find(s => s.title === storyTitle)
-    //update the story with newdata
-    Object.assign(story, newData)
-    return story
-  }
-
-  static deleteUserByEmail(email) {
-    const index = User.list.findIndex(user => user.email === email)
-
-    if (index === -1) {
-      return null // User not found
-    }
-
-    const deletedUser = User.list.splice(index, 1)[0]
-    return deletedUser
-  }
 }
 
 userSchema.loadClass(User)
