@@ -1,0 +1,6 @@
+node_module
+.history
+.eslintrc.js
+.prettierrc
+.prettierignore
+Dockerfile
