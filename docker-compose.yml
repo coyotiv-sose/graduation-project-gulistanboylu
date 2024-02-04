@@ -6,9 +6,15 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      - MONGODB_CONNECTION_STRING
+      - MONGODB_CONNECTION_STRING=mongodb://mongo/tinytale
     ports:
       - 3000:3000
       - 35729:35729
     volumes:
       - ./src:/app/src
+  mongo:
+    image: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - ./data:/data/db
