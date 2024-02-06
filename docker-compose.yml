@@ -9,7 +9,6 @@ services:
       - MONGODB_CONNECTION_STRING=mongodb://mongo/tinytale
     ports:
       - 3000:3000
-      - 35729:35729
     volumes:
       - ./src:/app/src
   mongo:
