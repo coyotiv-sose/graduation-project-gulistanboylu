@@ -1,16 +1,16 @@
 version: '3'
 services:
-  app:
+  backend:
     image: graduation-project-gulistanboylu:v1
     build:
-      context: .
+      context: backend
       dockerfile: Dockerfile
     environment:
       - MONGODB_CONNECTION_STRING=mongodb://mongo/tinytale
     ports:
       - 3000:3000
     volumes:
-      - ./src:/app/src
+      - ./backend/src:/app/src
   mongo:
     image: mongo
     ports:
