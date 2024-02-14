@@ -1,7 +1,7 @@
 version: '3'
 services:
   backend:
-    image: graduation-project-gulistanboylu:v1
+    image: backend
     build:
       context: backend
       dockerfile: Dockerfile
@@ -11,6 +11,18 @@ services:
       - 3000:3000
     volumes:
       - ./backend/src:/app/src
+
+  frontend:
+    image: frontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    ports:
+      - 5173:5173
+    volumes:
+      - ./frontend/src:/app/src
+      - ./frontend/public:/app/public
+
   mongo:
     image: mongo
     ports:
