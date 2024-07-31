@@ -65,6 +65,15 @@ async function main() {
     buket
   )
 
+  await createStory(
+    'Joe',
+    'Goes to play date',
+    'Joe is going to play date with his friends Ari',
+    'Mum, Peri',
+    '2 years old girl with strait blonde hair, lovely simile with a blue eyes',
+    rose
+  )
+
   const getRose = await axios.get(`${userEndPoint}/65ad40c81dd49bdee858155c`).then(response => {
     return response.data
   })
